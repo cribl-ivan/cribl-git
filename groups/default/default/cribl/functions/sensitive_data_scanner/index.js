@@ -1,0 +1,1 @@
+exports.name="Sensitive Data Scanner";exports.version="1.0";exports.group="Standard";exports.sync=true;let scanner;exports.init=n=>{scanner=C.internal.SensitiveDataScannerFactory.getInstance(n.conf);return scanner.init()};exports.process=n=>scanner.scan(n);
