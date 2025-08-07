@@ -1,0 +1,10 @@
+auth:
+  type: local
+  filter_type: email_whitelist
+git:
+  authType: ssh
+  gitOps: none
+  remote: git@github.com:cribl-ivan/cribl-git.git
+  autoAction: none
+  strictHostKeyChecking: true
+  timeout: 300000

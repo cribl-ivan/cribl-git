@@ -1,0 +1,17 @@
+distributed:
+  mode: master
+  master:
+    host: 0.0.0.0
+    port: 4200
+    forwardToLeaderApi: true
+    tls:
+      disabled: true
+    authToken: "#42:USembNlD+yNHw79f0N5nSoK2GGVcncgsv8eXAz/Lq6n0/vuAikt50n/v1na4FjX\
+      uv8eY5u2fLlFjXyjceVV51Q=="
+    ipWhitelistRegex: /.*/
+    maxActiveCxn: 0
+    resiliency: none
+    configBundles: {}
+    configHelperSocketDir: /tmp
+  cloudWorkspace:
+    disabled: true
