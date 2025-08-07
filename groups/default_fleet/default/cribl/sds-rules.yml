@@ -1,0 +1,15 @@
+email:
+  lib: cribl
+  regex: /[a-zA-Z0-9_+&*-]+(?:\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,24}/gm
+  description: Matches email address like foo@bar.com, foo.bar@bar.com, foo.going@bar.museum
+  rulesets:
+    - temp_email
+    - temp_USA_PII
+    - temp_EU_PII
+alpha_chars:
+  lib: cribl
+  regex: /[a-zA-Z0-9]+/gm
+  description: Matches alphabetic characters
+  rulesets:
+    - temp_alpha
+    - temp_EU_PII

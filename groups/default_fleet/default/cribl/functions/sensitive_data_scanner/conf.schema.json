@@ -1,0 +1,89 @@
+{
+  "type": "object",
+  "title": "",
+  "required": ["rules"],
+  "properties": {
+    "rules": {
+      "type": "array",
+      "title": "Scanning Rulesets",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["rulesetId", "replaceExpr"],
+        "properties": {
+          "rulesetId": {
+            "type": "string",
+            "title": "Ruleset ID",
+            "description": "The ID of the ruleset to use for the scan"
+          },
+          "replaceExpr": {
+            "type": "string",
+            "title": "Mitigation details",
+            "description": "A JavaScript expression or literal to replace the matching content",
+            "jsExpression": true,
+            "default": "C.Mask.REDACTED"
+          },
+          "disabled": {
+            "type": "boolean",
+            "default": false,
+            "description": "Enable evaluation of individual rulesets"
+          }
+        }
+      }
+    },
+    "fields": {
+      "type": "array",
+      "title": "Fields to evaluate",
+      "description": "Fields on which to apply the masking rules. Supports * wildcards, except when used on internal fields",
+      "items": {
+        "type": "string",
+        "pattern": "^(?!__.*\\*).*$",
+        "errorMessage": {
+           "pattern": "Internal fields cannot be used with wildcards."
+        }
+      },
+      "default": ["_raw"]
+    },
+    "excludeFields": {
+      "type": "array",
+      "title": "Fields to exclude",
+      "description": "Fields to exclude from masking rules. Supports * wildcards, except when used on internal fields",
+      "placeholder": "Start typing to add exclusion fields",
+      "items": {
+        "type": "string",
+        "pattern": "^(?!__.*\\*).*$",
+        "errorMessage": {
+           "pattern": "Internal fields cannot be used with wildcards."
+        }
+      },
+      "default": []
+    },
+    "flags": {
+      "title": "Add fields",
+      "description": "Fields to evaluate if one or more masking rules are matched",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["value"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "value": {
+            "type": "string",
+            "title": "Value",
+            "description": "JavaScript expression to compute the value (can be constant)",
+            "jsExpression": true
+          }
+        }
+      }
+    },
+    "includeDetectedRules": { 
+      "type": "boolean",
+      "title": "Include detected rules",
+      "description": "Include the rules that were detected in the event",
+      "default": true
+    }
+  }
+}

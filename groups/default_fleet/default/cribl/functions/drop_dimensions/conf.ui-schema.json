@@ -1,0 +1,12 @@
+{
+  "timeWindow": {
+    "ui:options": {
+      "labelInline": true,
+      "width": "250px"
+    } 
+  },
+  "dropDimensions": {
+    "ui:field": "Tags",
+    "ui:placeholder": "One or more dimensions (or wildcard expression) to drop. Required."
+  }
+}
