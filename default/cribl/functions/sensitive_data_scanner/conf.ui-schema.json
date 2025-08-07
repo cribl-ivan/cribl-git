@@ -1,0 +1,58 @@
+{
+  "rules": {
+    "ui:field": "Table",
+    "ui:options": {
+      "popupEditor": "RegexEditor",
+      "popupEditorTitle": "Event Breaker Rule",
+      "matchRegexProperty": "matchRegex",
+      "replaceExprProperty": "replaceExpr",
+      "eventFieldProperty": "fields"
+    },
+    "items": {
+      "rulesetId": {
+        "ui:widget": "ApiLookup",
+          "ui:options": {
+            "lookupProvider": "Rulesets"
+          }
+      },
+      "replaceExpr": {
+        "ui:widget": "JsInputWithoutPopup",
+        "ui:placeholder": "Enter replace expression",
+        "ui:default": "C.Mask.REDACTED",
+        "ui:options": {
+          "columnWidth": "42%"
+        }
+      },
+      "disabled": {
+        "ui:title": "Enabled",
+        "ui:options": {
+          "columnWidth": "15%",
+          "inverted": true
+        }
+      }
+    }
+  },
+  "fields": {
+    "ui:field": "Tags",
+    "ui:placeholder": "Field names"
+  },
+  "excludeFields": {
+    "ui:field": "Tags",
+    "ui:placeholder": "Start typing to add exclusion fields"
+  },
+  "flags": {
+    "ui:field": "Table",
+    "items": {
+      "name": {
+        "ui:placeholder": "Enter field name"
+      },
+      "value": {
+        "ui:widget": "JsInputWithoutPopup",
+        "ui:placeholder": "Enter value expression"
+      }
+    }
+  },
+  "includeDetectedRules": {
+    "ui:title": "Add array of detected rulesets"
+  }
+}
