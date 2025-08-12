@@ -1,0 +1,24 @@
+name: Cribl GitOps Deploy
+run-name: ${{ github.actor }} is deploying to Cribl prod
+on:
+  push:
+    branches:
+      - prod
+jobs:
+  cribl-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GITOPS_USER_PASSWORD: ${{ secrets.GITOPS_USER_PASSWORD }}
+        run: |
+          # Authenticate and Save the Token.
+          TOKEN=$(curl ${{ vars.PROD_LEADER_BASE_URI }}/api/v1/auth/login \
+               -H 'Content-Type: application/json' \
+               -d "{\"username\":\"gitops\",\"password\":\"$GITOPS_USER_PASSWORD\"}" 2>/dev/null | \
+               jq -r .token)
+          
+          # Set up the Authentication Header
+          export AUTH_HEAD="Authorization: Bearer $TOKEN"
+        
+          # Make the notification call
+          curl -X POST "${{ vars.PROD_LEADER_BASE_URI }}/api/v1/version/sync" -H "accept: application/json" -H "${AUTH_HEAD}" -d "ref=prod&deploy=true"

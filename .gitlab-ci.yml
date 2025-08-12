@@ -1,0 +1,68 @@
+# Defines the stages for the CI/CD pipeline.
+stages:
+  - test
+  - deploy
+
+# This job runs tests on the Python application.
+run_python_tests:
+  stage: test
+  # Use a Docker image with Python 3.13 pre-installed.
+  image: python:3.13
+
+  # Define rules for when this job should run.
+  # It will only run for merge requests targeting the 'prod' branch.
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "prod"'
+
+  # Cache pip dependencies to speed up subsequent runs.
+  # The key is based on the hash of the requirements file, so the cache is
+  # invalidated only when the dependencies change.
+  cache:
+    key:
+      files:
+        - requirements.txt
+    paths:
+      - .cache/pip
+
+  # The sequence of commands to be executed.
+  script:
+    - echo "Installing dependencies..."
+    - python -m pip install -r requirements.txt
+    - echo "Running tests..."
+    # Run pytest and generate a JUnit XML report.
+    - pytest --junitxml=report.xml
+
+  # Define artifacts to be saved after the job completes.
+  # GitLab natively supports JUnit reports, which will be displayed in the MR.
+  artifacts:
+    when: always
+    reports:
+      junit: report.xml
+
+# This job deploys to Cribl after a successful push to the 'prod' branch.
+deploy_to_cribl:
+  stage: deploy
+  # Use a lightweight image and install the necessary tools.
+  image: alpine:latest
+  before_script:
+    - apk add curl jq
+  rules:
+    # Run only for pushes directly to the 'prod' branch.
+    - if: '$CI_COMMIT_BRANCH == "prod"'
+  script:
+    - echo "Authenticating with Cribl and triggering sync..."
+    # 1. Authenticate and save the token.
+    #    The $GITOPS_USER_PASSWORD variable must be set in GitLab CI/CD settings.
+    - |
+      TOKEN=$(curl $PROD_LEADER_BASE_URI/api/v1/auth/login \
+           -H 'Content-Type: application/json' \
+           -d "{\"username\":\"gitops\",\"password\":\"$GITOPS_USER_PASSWORD\"}" --silent | \
+           jq -r .token)
+    # 2. Set up the Authentication Header.
+    - export AUTH_HEAD="Authorization: Bearer $TOKEN"
+    # 3. Trigger the deployment.
+    - |
+      curl -X POST "$PROD_LEADER_BASE_URI/api/v1/version/sync" \
+           -H "accept: application/json" \
+           -H "${AUTH_HEAD}" \
+           -d "ref=prod&deploy=true"
