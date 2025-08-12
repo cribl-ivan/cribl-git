@@ -55,3 +55,6 @@ functions:
     description: Drop fields that start with date_*
 output: default
 description: Filter and Sample Palo Alto traffic events
+streamtags:
+  - PaloAlto
+groups: {}
