@@ -59,7 +59,8 @@ deploy_to_cribl:
            -d "{\"username\":\"gitops\",\"password\":\"$GITOPS_USER_PASSWORD\"}" --silent | \
            jq -r .token)
     # 2. Set up the Authentication Header.
-    - export AUTH_HEAD="Authorization: Bearer $TOKEN"
+    - |
+      export AUTH_HEAD="Authorization: Bearer $TOKEN"
     # 3. Trigger the deployment.
     - |
       curl -X POST "$PROD_LEADER_BASE_URI/api/v1/version/sync" \

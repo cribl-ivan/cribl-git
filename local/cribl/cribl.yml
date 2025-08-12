@@ -4,7 +4,7 @@ auth:
 git:
   authType: ssh
   gitOps: none
-  remote: git@github.com:cribl-ivan/cribl-git.git
+  remote: git@gitlab.com:cribl-ivan/cribl-git.git
   autoAction: none
   strictHostKeyChecking: true
   timeout: 300000
