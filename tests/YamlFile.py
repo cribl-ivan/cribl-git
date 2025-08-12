@@ -27,7 +27,7 @@ class YamlItem(Item):
 class YamlTags(YamlItem):
     def runtest(self):
         if 'streamtags' not in self.yaml or len(self.yaml['streamtags']) == 0:
-            raise YamlFile.YamlException("* No tags found *", "All pipelines must have at least one tag")
+            raise YamlException("* No tags found *", "All pipelines must have at least one tag")
 
 class PipelineNamingConvention(YamlItem):
     def runtest(self):
