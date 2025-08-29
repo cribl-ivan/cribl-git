@@ -1,4 +1,4 @@
-provider: vault
+provider: local
 enableHealthCheck: true
 healthCheckEndpoint: /v1/sys/health
 tls:
