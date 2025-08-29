@@ -1,0 +1,12 @@
+provider: vault
+enableHealthCheck: true
+healthCheckEndpoint: /v1/sys/health
+tls:
+  disabled: true
+engine:
+  mount: secret
+  secretPath: cribl-gitops
+auth:
+  provider: token
+  token: ZoQJocAv4DTIGOOYUAo6TNiHKfUccsX0
+url: http://172.19.0.4:8200

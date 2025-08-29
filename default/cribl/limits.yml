@@ -3,7 +3,7 @@ samples:
 minFreeSpace: 5 GB
 metricsGCPeriod: 60s
 maxMetrics: 1000000
-workerMaxMetrics: 100000
+workerMaxMetrics: 1000000
 metricsMaxCardinality: 1000
 metricsMaxDiskSpace: 64GB
 metricsWorkerIdBlacklist:
