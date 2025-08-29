@@ -76,7 +76,7 @@
       "type": "string",
       "default": "_raw"
     },
-    "dstField": {},
+    "dstField": { "$ref": "#/definitions/dstField" },
     "cleanFields": {}
   },
   "dependencies": {
@@ -87,7 +87,6 @@
             "type": {
               "enum": ["kvp"]
             },
-            "dstField": { "$ref": "#/definitions/dstField" },
             "keep": { "$ref": "#/definitions/keep" },
             "remove": { "$ref": "#/definitions/remove" },
             "fieldFilterExpr": { "$ref": "#/definitions/fieldFilterExpr" },
@@ -118,7 +117,6 @@
             "type": {
               "enum": ["delim"]
             },
-            "dstField": { "$ref": "#/definitions/dstField" },
             "fields": { "$ref": "#/definitions/fields" },
             "keep": { "$ref": "#/definitions/keep" },
             "remove": { "$ref": "#/definitions/remove" },
@@ -157,7 +155,6 @@
             "type": {
               "enum": ["csv", "elff", "clf"]
             },
-            "dstField": { "$ref": "#/definitions/dstField" },
             "fields": { "$ref": "#/definitions/fields" },
             "keep": { "$ref": "#/definitions/keep" },
             "remove": { "$ref": "#/definitions/remove" },
@@ -169,7 +166,6 @@
             "type": {
               "enum": ["json"]
             },
-            "dstField": { "$ref": "#/definitions/dstField" },
             "keep": { "$ref": "#/definitions/keep" },
             "remove": { "$ref": "#/definitions/remove" },
             "fieldFilterExpr": { "$ref": "#/definitions/fieldFilterExpr" }
