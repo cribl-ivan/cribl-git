@@ -309,7 +309,7 @@ Splunk Search Ruleset:
         type: auto
         length: 150
       timestampTimezone: utc
-      maxEventBytes: 51200
+      maxEventBytes: 102400
       delimiter: ","
       quoteChar: '"'
       escapeChar: '"'
@@ -321,7 +321,7 @@ Splunk Search Ruleset:
         type: auto
         length: 150
       timestampTimezone: utc
-      maxEventBytes: 51200
+      maxEventBytes: 102400
       name: json
 Cribl Search:
   lib: cribl
