@@ -1,1 +1,1 @@
-{"name":"LogStream","version":"4.13.0-46ac1714","dependencies":{"HelloPacks":"file:$CRIBL_HOME/default/HelloPacks","cribl":"file:$CRIBL_HOME/default/cribl"}}
+{"dependencies":{"HelloPacks":"file:$CRIBL_HOME/default/HelloPacks","cribl":"file:$CRIBL_HOME/default/cribl"},"name":"LogStream","version":"4.13.0-46ac1714"}
