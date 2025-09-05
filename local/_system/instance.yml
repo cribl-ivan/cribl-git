@@ -14,4 +14,13 @@ distributed:
     configBundles: {}
     configHelperSocketDir: /tmp
   cloudWorkspace:
-    disabled: true
+    disabled: false
+    subscriptionAgreement: true
+    host: main-admiring-mcgovern-tvoeheh.cribl.cloud
+    port: 4200
+    authToken: "#42:CwoZowfCVkHO0MZrsxZBv3ZVFly1ApYGsFI04G+yMJi2M8D5y8A9K1dZh5dkWHs\
+      bGWDX1LEFlMWPCuFqUHu9dg=="
+    tls:
+      disabled: false
+      rejectUnauthorized: true
+  reportedDeploymentId: Show & Tell GitOps
