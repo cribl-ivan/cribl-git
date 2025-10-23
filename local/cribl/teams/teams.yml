@@ -1,0 +1,6 @@
+test_team:
+  roles:
+    - stream_editor
+  ssoGroupIds:
+    - test_team
+  name: test_team

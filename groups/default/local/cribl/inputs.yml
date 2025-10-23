@@ -1,0 +1,29 @@
+inputs:
+  in_splunk_hec:
+    disabled: false
+    sendToRoutes: true
+    pqEnabled: false
+    streamtags: []
+    host: 0.0.0.0
+    tls:
+      disabled: true
+    maxActiveReq: 256
+    maxRequestsPerSocket: 0
+    enableProxyHeader: false
+    captureHeaders: false
+    activityLogSampleRate: 100
+    requestTimeout: 0
+    socketTimeout: 0
+    keepAliveTimeout: 5
+    ipAllowlistRegex: /.*/
+    ipDenylistRegex: /^$/
+    splunkHecAPI: /services/collector
+    splunkHecAcks: false
+    staleChannelFlushMs: 10000
+    useFwdTimezone: true
+    dropControlFields: true
+    extractMetrics: false
+    emitTokenMetrics: false
+    type: splunk_hec
+    port: 8088
+    environment: dev
