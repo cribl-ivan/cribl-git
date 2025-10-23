@@ -21,4 +21,4 @@ jobs:
           export AUTH_HEAD="Authorization: Bearer $TOKEN"
         
           # Make the notification call
-          curl -X POST "${{ vars.PROD_LEADER_BASE_URI }}/api/v1/version/sync" -H "accept: application/json" -H "${AUTH_HEAD}" -d "ref=prod&deploy=true"
+          curl -X POST "${{ vars.PROD_LEADER_BASE_URI }}/api/v1/version/sync" -H "accept: application/json" -H "${AUTH_HEAD}" -d "ref=dev&deploy=true"
