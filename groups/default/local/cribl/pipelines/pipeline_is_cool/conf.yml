@@ -53,6 +53,30 @@ functions:
       remove:
         - date_*
     description: Drop fields that start with date_*
+  - id: comment
+    filter: "true"
+    disabled: null
+    conf:
+      comment: Drop all date_* fields from each event. They're unreliable (non TZ
+        aware) and are very rarely used.
+  - id: comment
+    filter: "true"
+    disabled: null
+    conf:
+      comment: Drop all date_* fields from each event. They're unreliable (non TZ
+        aware) and are very rarely used.
+  - id: comment
+    filter: "true"
+    disabled: null
+    conf:
+      comment: Drop all date_* fields from each event. They're unreliable (non TZ
+        aware) and are very rarely used.
+  - id: comment
+    filter: "true"
+    disabled: null
+    conf:
+      comment: Drop all date_* fields from each event. They're unreliable (non TZ
+        aware) and are very rarely used.
 output: default
 description: Filter and Sample Palo Alto traffic events
 streamtags:
